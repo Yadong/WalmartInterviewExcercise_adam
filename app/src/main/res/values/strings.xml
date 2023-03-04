@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">WalmartInterviewExercise</string>
+    <string name="home_generic_error">Oops! Something went wrong.\nPlease try again later.</string>
+    <string name="network_error">Please check your internet connection \n and relaunch the app.</string>
+    <string name="home_retry">Try Again</string>
+    <string name="name_region">%1$s, %2$s</string>
+</resources>
