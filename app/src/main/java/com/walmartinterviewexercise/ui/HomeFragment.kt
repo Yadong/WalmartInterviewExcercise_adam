@@ -14,6 +14,7 @@ import com.walmartinterviewexercise.adapters.HomeAdapter
 import com.walmartinterviewexercise.api.RetrofitBuilder
 import com.walmartinterviewexercise.databinding.FragmentHomeBinding
 import com.walmartinterviewexercise.extensions.isNetworkConnected
+import com.walmartinterviewexercise.utils.AppLog
 import com.walmartinterviewexercise.viewmodels.HomeViewModel
 import com.walmartinterviewexercise.viewmodels.ViewModelFactory
 
@@ -79,6 +80,9 @@ class HomeFragment : Fragment() {
             getCountryList()
         } else {
             binding.homeNetworkError.root.isVisible = true
+            binding.homeNetworkError.buttonRetry.setOnClickListener {
+                getCountryList()
+            }
         }
     }
 
@@ -89,6 +93,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun onError(message: String) {
+        AppLog.e(LOG_TAG, message = message, throwable = null)
         binding.homeError.root.isVisible = true
         binding.progressBar.isVisible = false
         binding.homeError.buttonRetry.setOnClickListener {
