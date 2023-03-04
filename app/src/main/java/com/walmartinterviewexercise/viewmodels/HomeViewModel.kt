@@ -6,11 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.walmartinterviewexercise.api.APIService
 import com.walmartinterviewexercise.model.Country
+import com.walmartinterviewexercise.model.CountryManager
 import com.walmartinterviewexercise.ui.UIState
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val apiService: APIService): ViewModel() {
+class HomeViewModel(private val countryManager: CountryManager): ViewModel() {
 
     private val fullFormListUIState = MutableLiveData<UIState<List<Country>>>()
 
@@ -20,7 +21,7 @@ class HomeViewModel(private val apiService: APIService): ViewModel() {
         viewModelScope.launch {
             try {
                 coroutineScope {
-                    val list = apiService.getCountryList()
+                    val list = countryManager.getCountryList()
                     fullFormListUIState.postValue(UIState.Success(list))
                 }
             } catch (e: java.lang.Exception) {
